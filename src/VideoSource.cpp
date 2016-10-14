@@ -32,18 +32,18 @@ ofPixels& VideoGrabberSource::getPixels() {
 
 int VideoGrabberSource::getWidth() {
 	//return video.width; //this errors out -- ofVideoGrabber doesn't have width and height vars anymore. Hardcoding for now as a stopgap.
-	320
+	320;
 }
 
 int VideoGrabberSource::getHeight() {
 	//return video.height; //this errors out -- ofVideoGrabber doesn't have width and height vars anymore. Hardcoding for now as a stopgap.
-	240
+	240;
 }
 
 void VideoGrabberSource::draw(int x, int y, int width, int height) {
 	video.draw(x, y, width, height);
 }
-
+/* --removing picamera option. There's something wrong with the arguments being passed. Will revise later.
 #ifdef TARGET_RASPBERRY_PI
 
 PiCameraSource::PiCameraSource(int desiredWidth, int desiredHeight) {
@@ -108,3 +108,4 @@ void PiCameraSource::draw(int x, int y, int width, int height) {
 }
 
 #endif
+*/
