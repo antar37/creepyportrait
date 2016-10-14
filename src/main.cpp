@@ -32,7 +32,7 @@ void printUsage() {
 	cout << endl;
 	exit(0);
 }
-
+/* I can't get this thing to compile with this block active. Not using it anyway because i've got a webcam.
 #ifdef TARGET_RASPBERRY_PI
 
 // Setup default config for Raspberry Pi.
@@ -62,7 +62,7 @@ void configureApp(int videoDeviceId, bool usePiCamera, const string& model, Cree
 }
 
 #else
-
+*/ 
 // Setup default config for other platforms.
 void configureApp(int videoDeviceId, bool usePiCamera, const string& model, CreepyPortrait* app) {
 	const int videoWidth = 320;
@@ -96,7 +96,7 @@ void configureApp(int videoDeviceId, bool usePiCamera, const string& model, Cree
 	app->videoFOV = 60; // 73.0 for MS HD life cam
 }
 
-#endif
+//#endif //--since the IF was removed, the endif must be removed as well. 
 
 int main(int argc, char* argv[]){
 	cout << "Creepy Portrait v1.0" << endl;
@@ -137,7 +137,11 @@ int main(int argc, char* argv[]){
 		printUsage();
 	}
 	// Setup the renderer and application.
-	ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
+	//ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE); //this seems to be old code. Adding the latest stuff below.
+	ofGLWindowSettings settings;
+	settings.setGLVersion(3,2);
+	ofCreateWindow(settings);
+	
 	CreepyPortrait* app = new CreepyPortrait();
 	configureApp(videoDeviceId, usePiCamera, model, app);
 	ofRunApp(app);
